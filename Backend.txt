@@ -1,0 +1,33 @@
+----------------------------- Backend ---------------------------------------------------
+
+	# Django-cors-headers:
+
+-Purpose: Essential for handling Cross-Origin Resource Sharing (CORS) in Django projects.
+-Functionality: Manages CORS headers, specifying which domains are allowed to access resources.
+-Usage: Installed as a Django app, added to INSTALLED_APPS and middleware, and configured to permit specific origins.
+
+	# Django REST framework (DRF):
+
+-Purpose: A toolkit for simplifying the development of Web APIs in Django.
+-Features:
+Serialization engine for converting complex data types.
+Class-based views and viewsets for defining API behavior.
+Authentication and permission support.
+Pagination for handling large result sets.
+Browsable API interface for easier development and testing.
+-Usage: Integrated into Django projects to create robust, scalable APIs with support for 
+authentication, serialization, and more.
+
+	# API 
+
+-Django REST framework (DRF) in the Backend:
+
+In a Django project, DRF is often used to create APIs on the backend.
+DRF provides tools for defining API endpoints, handling HTTP requests, and serializing/deserializing 
+data between the frontend and backend.
+
+-Frontend Consuming APIs:
+
+On the frontend, you use technologies like JavaScript to make HTTP requests to the backend API endpoints.
+These requests can be for retrieving data (GET requests), sending data to be processed (POST requests), 
+updating data (PUT/PATCH requests), or deleting data (DELETE requests).

@@ -1,0 +1,36 @@
+------------------------------ Frontend ------------------------------------------------------------------------------
+
+	Vue.js
+
+Vue.js is a progressive JavaScript framework for building user interfaces. It enables developers to create dynamic, 
+interactive web applications by providing a flexible and easy-to-understand structure. 
+Vue.js facilitates the creation of reusable components, ensures reactive data-binding, 
+and simplifies the development process with features like a routing 
+system (Vue Router) and state management (Vuex). Its incremental adoptability makes it versatile for 
+projects of various scales, and its clear syntax and robust community support contribute to its popularity in frontend development.
+
+	Pinia 
+
+Modular State Management:
+
+Pinia enables developers to organize state logic into modular stores, promoting a clean and scalable structure 
+for managing application state.
+Vue 3 Composition API Integration:
+
+Built with Vue 3, Pinia seamlessly integrates with the Composition API, providing a modern and flexible 
+way to structure and compose state-related logic.
+Type Safety with TypeScript:
+
+Pinia leverages TypeScript for type-safe state management, ensuring code integrity and catching potential
+ errors related to state access at compile time.
+Reactivity:
+
+Similar to Vue.js, Pinia utilizes reactivity to automatically update components when the underlying 
+state changes, ensuring a responsive and dynamic user interface.
+Devtools Support:
+
+Pinia integrates with Vue Devtools, facilitating easy inspection and debugging of the application's state during development.
+Performance Optimization:
+
+Designed with a focus on performance, Pinia provides an efficient solution for managing state in Vue.js 
+applications, contributing to a smooth and responsive user experience.
