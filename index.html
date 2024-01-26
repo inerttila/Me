@@ -1,187 +1,374 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" href="logo.png" type="image/png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Timesheet Management Application</title>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <link
+    rel="icon"
+    href="https://skaitech.al/wp-content/uploads/2020/10/cropped-logo-black-copy.png"
+    type="image/png"
+  />
+
     <style>
-      @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap");
+body {
+  font-family: "Courier New", Courier, monospace;
+  background-color: #282c34;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+  margin: 0;
+}
 
-      :root {
+.terminal {
+  background-color: #000;
+  border-radius: 10px;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  margin: 0;
+  position: relative;
+}
 
-        --body-color: #393937;
-        --accent-color: #03e9f4;
-        --white-color: #fff;
-        --box-shadow: 0 0 5px #03e9f4, 0 0 25px #03e9f4, 0 0 50px #03e9f4,
-          0 0 100px #03e9f4;
+.header {
+  background-color: #1e1e1e;
+  padding: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2); 
+}
 
-        --body-font: "Montserrat", sans-serif;
-        --normal-font-size: 1rem;
+.buttons {
+  display: flex;
+  gap: 5px;
+}
 
-        --font-regular: 400;
-        --font-semi-bold: 600;
+.close,
+.minimize,
+.expand {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  transition: 0.3s ease; 
+}
 
-        --z-tooltip: 10;
-        --z-fixed: 100;
-      }
+.close {
+  background-color: #ff5f57;
+}
 
-      * {
-        box-sizing: border-box;
-        padding: 0;
-        margin: 0;
-      }
+.close:hover {
+  background-color: #d64242; 
+}
 
-      body {
-        font-family: var(--body-font);
-        font-size: var(--normal-font-size);
-        background: #000;
-        min-height: 120vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
+.minimize {
+  background-color: #ffbd2e;
+}
 
-      ul {
-        list-style: none;
-      }
+.minimize:hover {
+  background-color: #e5a526; 
+}
 
-      a {
-        text-decoration: none;
-      }
+.expand {
+  background-color: #27c93f;
+}
 
-      .button-animation {
-        position: relative;
-        display: inline-block;
-        padding: 20px 30px;
-        color: var(--accent-color);
-        text-transform: uppercase;
-        overflow: hidden;
-        letter-spacing: 4px;
-        transition: 0.5s;
-      }
+.expand:hover {
+  background-color: #219834; 
+}
 
-      .button-animation span {
-        position: absolute;
-        display: block;
-      }
+.ascii-art {
+  font-size: 1vw; 
+  white-space: pre-wrap; 
+  word-wrap: break-word;
+}
 
-      .button-animation span:nth-child(1) {
-        top: 0;
-        left: -100%;
-        width: 100%;
-        height: 2px;
-        background: linear-gradient(90deg, transparent, var(--accent-color));
-        animation: btn-anim1 1s linear infinite;
-      }
+@media only screen and (max-width: 600px) {
+  .ascii-art {
+    font-size: 1.7vw;
+  }
+}
 
-      @keyframes btn-anim1 {
-        0% {
-          left: -100%;
-        }
-        50%,
-        100% {
-          left: 100%;
-        }
-      }
+@media only screen and (min-width: 601px) and (max-width: 900px) {
+  .ascii-art {
+    font-size: 1.6vw;
+  }
+}
 
-      .button-animation span:nth-child(2) {
-        top: -100%;
-        right: 0;
-        width: 2px;
-        height: 100%;
-        background: linear-gradient(180deg, transparent, var(--accent-color));
-        animation: btn-anim2 1s linear infinite;
-        animation-delay: 0.25s;
-      }
+@media only screen and (min-width: 901px) {
+  .ascii-art {
+    font-size: 1vw;
+  }
+}
 
-      @keyframes btn-anim2 {
-        0% {
-          top: -100%;
-        }
-        50%,
-        100% {
-          top: 100%;
-        }
-      }
+.content {
+  padding: 20px;
+  color: #00ff00;
+  height: calc(100vh - 50px); 
+  overflow-y: auto; 
+}
 
-      .button-animation span:nth-child(3) {
-        bottom: 0;
-        right: -100%;
-        width: 100%;
-        height: 2px;
-        background: linear-gradient(270deg, transparent, var(--accent-color));
-        animation: btn-anim3 1s linear infinite;
-        animation-delay: 0.5s;
-      }
+.cursor {
+  background-color: #00ff00;
+  animation: blink 1s infinite;
+}
 
-      @keyframes btn-anim3 {
-        0% {
-          right: -100%;
-        }
-        50%,
-        100% {
-          right: 100%;
-        }
-      }
+@keyframes blink {
+  0%,
+  49% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
 
-      .button-animation span:nth-child(4) {
-        bottom: -100%;
-        left: 0;
-        width: 2px;
-        height: 100%;
-        background: linear-gradient(360deg, transparent, var(--accent-color));
-        animation: btn-anim4 1s linear infinite;
-        animation-delay: 0.75s;
-      }
+.header {
+  background-color: #282c34;
+  padding: 8px 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  height: 14px;
+}
 
-      @keyframes btn-anim4 {
-        0% {
-          bottom: -100%;
-        }
-        50%,
-        100% {
-          bottom: 100%;
-        }
-      }
+.buttons {
+  display: flex;
+  gap: 8px; 
+}
 
-      .button-animation:hover {
-        background-color: var(--accent-color);
-        color: var(--white-color);
-        border-radius: 5px;
-        box-shadow: var(--box-shadow);
-      }
-      .page-text {
-        text-align: center;
-        color: var(--white-color);
-        font-size: 1.5rem;
-        margin-top: 10px;
-        position: absolute;
-        top: 150px;
-        left: 50%;
-        transform: translateX(-50%);
+.close,
+.minimize,
+.expand {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  transition: 0.3s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2); 
+}
 
-        background-color: var(--body-color); 
-        padding: 10px; 
-        border-radius: 5px; 
-        box-shadow: 0 0 10px rgba(3, 233, 244, 0.5); 
-        color: #03e9f4; 
-      }
+.close {
+  background-color: #fc5f56;
+}
+
+.close:hover {
+  background-color: #eb4d44;
+}
+
+.minimize {
+  background-color: #fecb2e;
+}
+
+.minimize:hover {
+  background-color: #e4b526; 
+}
+
+.expand {
+  background-color: #2bca3b;
+}
+
+.expand:hover {
+  background-color: #24ad31; 
+}
+
+a {
+  color: #00ff00;
+  text-decoration: none;
+  border-bottom: 1px dashed #00ff00;
+  transition: 0.3s ease;
+}
+
+a:hover {
+  color: #00cc00;
+  background-color: #222;
+  border-bottom: 1px solid #00cc00;
+}
+
+span[onclick]:hover {
+  cursor: pointer;
+  background-color: rgba(0, 255, 0, 0.2);
+}
+
     </style>
-  </head>
-  <body>
-    <a
-      class="box__link button-animation"
-      href="https://drive.google.com/file/d/1dSjV0SLgc-BXZlFEGQqjRl5wag4Oxric/view?usp=sharing"
-    >
-      Download
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
-    </a>
-    <p class="page-text">
-      Click Download To Install Timesheet Management Application
-    </p>
-  </body>
+</head>
+<body>
+    <div class="terminal">
+
+        <div class="content">
+<p class="output">
+    Last login: <span id="dateTime"></span>
+    <pr class="ascii-art">
+
+        ____   _   __   ______  ____   ______    ______  ____  __     ___ 
+       /  _/  / | / /  / ____/ / __ \ /_  __/   /_  __/ /  _/ / /    /   |
+       / /   /  |/ /  / __/   / /_/ /  / /       / /    / /  / /    / /| |
+     _/ /   / /|  /  / /___  / _, _/  / /       / /   _/ /  / /___ / ___ |
+    /___/  /_/ |_/  /_____/ /_/ |_|  /_/       /_/   /___/ /_____//_/  |_|
+    </pr  
+</p>
+<p>
+    Check out my <a href="https://github.com/inerttila">Github</a>, <a href="https://al.linkedin.com/in/inerttila">Linkedin</a><br><br>
+</p>
+<p class="typing"></p>
+<p class="input"><span class="prompt">$</span> <span class="cursor"></span></p>
+
+        </div>
+    </div>
+</body>
+<script>
+    const currentDate = new Date();
+const formattedDate =
+  currentDate.toDateString().split(" ").slice(0, 3).join(" ") +
+  " " +
+  currentDate.toTimeString().split(" ")[0].split(":").slice(0, 3).join(":");
+document.getElementById("dateTime").innerHTML = formattedDate;
+const typingElement = document.querySelector(".typing");
+let index = 0;
+let currentText = "";
+let isDeleting = false;
+let currentMenu = "main";
+
+const menus = {
+  
+  main: `Select a menu:<br><br><span onclick="handleMenuClick('1')">[1] Who am I?</span><br><span onclick="handleMenuClick('2')">[2] Contact me</span><br><span onclick="handleMenuClick('3')">[3] My works</span><br><span onclick="handleMenuClick('4')">[4] My Desktop App</span> `,
+ 
+  1: `Who am I?<br><br>  I'm a software developer with a strong foundation in Python, JavaScript, and Django. My passion lies in building high-performance applications and utilizing Docker for efficient deployment. Experienced in cloud computing and web development, I bring versatility to every project. Open to new opportunities in the world of technology.<br><br><span onclick="handleMenuClick('B')">[B] Back</span>`,
+  
+  2: `Contact:<br>- Email: <a href="mailto:inert.etila@gmail.com">inert.etila@gmail.com</a><br>- Linkedin: <a href="https://al.linkedin.com/in/inerttila">@inerttia</a><br><br><span onclick="handleMenuClick('B')">[B] Back</span>`,
+  
+  3: `Some of my Projects:<br><br>
+- <strong>SKAITECH Cloud</strong>: Survey, inspect, create orthomosaics, 3D point clouds, digital surface models, contours, multispectral maps and many more.<a href="https://cloud.skaitech.al/login/" target="_blank">[Cloud Skaitech]</a><br>
+- <strong>Object-Detection-YoloV5 (Private)</strong>: Object-Detection-Yolov5 is a Django WebApp integrating YoloV5 for real-time object detection. Harness the power of Python, Django, and YoloV5 .<a href="https://github.com/inerttila/Object-Detection-YoloV5.git" target="_blank">[GitHub]</a><br>
+- <strong>Excel-Data-App</strong>: Timesheet Management Application A Python and C++-based timesheet management application for tracking work hours and tasks.  <a href="https://github.com/inerttila/Excel-Data-App.git" target="_blank">[GitHub]</a><br>
+- <strong>File-Transfer-Server</strong>:File Transfer Server is a simple Flask-based web application for uploading files.<a href="https://github.com/inerttila/File-Transfer-Server.git" target="_blank">[GitHub]</a><br>
+- <strong>Django-Vue</strong>: Private Suggestions Portal collaboratively by utilizing Django Rest Framework 3 for the backend and VueJS 3, with Pinia for the frontend.<a href="https://github.com/inerttila/Django-Vue.git" target="_blank">[GitHub]</a><br>
+- <strong>Online-Code-Editor</strong>: Online Code Editor Project This project is an online code editor that allows users to write and run Python and JavaScript code within a web browser. <a href="https://github.com/inerttila/Online-Code-Editor.git" target="_blank">[GitHub]</a><br>
+- <strong>Registration-System</strong>: The "Qytetar" Management Application is a C++ program for managing and storing information about citizens. <a href="https://github.com/inerttila/Registration-System.git" target="_blank">[GitHub]</a><br><br><span onclick="handleMenuClick('B')">[B] Back</span>`,
+
+  4: `My Desktop App:<br><br> Timesheet Management Application <a href="https://drive.google.com/file/d/1dSjV0SLgc-BXZlFEGQqjRl5wag4Oxric/view" target="_blank">[Google Drive]</a><br><br><span onclick="handleMenuClick('B')">[B] Back</span>`,
+
+};
+
+function handleMenuClick(menuKey) {
+  if (menuKey in menus && currentMenu !== menuKey) {
+    isDeleting = true;
+    typeDeleteAnimation(() => {
+      currentMenu = menuKey;
+      currentText = menus[menuKey];
+      index = 0;
+      typeDeleteAnimation();
+    });
+  } else if ((menuKey === "B" || menuKey === "b") && currentMenu !== "main") {
+    isDeleting = true;
+    typeDeleteAnimation(() => {
+      currentMenu = "main";
+      currentText = menus.main;
+      index = 0;
+      typeDeleteAnimation();
+    });
+  }
+}
+function typeDeleteAnimation(callback) {
+  let speed = 7; 
+  let deleteSpeed = 3; 
+  if (currentMenu === "1" || currentMenu === "3") {
+    speed = 1; 
+    deleteSpeed = 1; 
+  }
+
+  if (isDeleting && typingElement.innerHTML !== "") {
+    if (currentText.charAt(index - 1) === ">") {
+      const openTagIndex = currentText.lastIndexOf("<", index);
+      const tagName = currentText.substring(
+        openTagIndex + 1,
+        currentText.indexOf(" ", openTagIndex)
+      );
+      const startTagIndex = currentText.lastIndexOf(`</${tagName}>`, index);
+      index = startTagIndex;
+    } else {
+      index--;
+    }
+    currentText = currentText.slice(0, index);
+    typingElement.innerHTML = currentText;
+
+    setTimeout(() => typeDeleteAnimation(callback), deleteSpeed);
+  } else if (isDeleting) {
+    isDeleting = false;
+    if (callback) callback();
+  } else if (!isDeleting && index < currentText.length) {
+    if (currentText.charAt(index) === "<") {
+      if (currentText.substr(index, 4) === "<br>") {
+        const br = document.createElement("br");
+        typingElement.appendChild(br);
+        index += 4;
+      } else {
+        const closingTagIndex = currentText.indexOf(">", index);
+        const tagName = currentText
+          .substring(index + 1, closingTagIndex)
+          .split(" ")[0];
+        const endTagIndex =
+          currentText.indexOf(`</${tagName}>`, index) + `</${tagName}>`.length;
+        const outerHTML = currentText.substring(index, endTagIndex);
+        const tempDiv = document.createElement("div");
+        tempDiv.innerHTML = outerHTML;
+        const childElement = tempDiv.firstChild;
+
+        if (tagName === "a") {
+          childElement.target = "_blank";
+          speed = 1; // Faster typing for <a> tag
+        } else if (tagName === "span") {
+          childElement.onclick = function () {
+            const menuKey = childElement
+              .getAttribute("onclick")
+              .replace("handleMenuClick('", "")
+              .replace("')", "");
+            handleMenuClick(menuKey);
+          };
+          speed = 1; 
+        }
+
+        typingElement.appendChild(childElement);
+        index = endTagIndex;
+      }
+    } else {
+      typingElement.innerHTML += currentText.charAt(index);
+      index++;
+    }
+
+    setTimeout(typeDeleteAnimation, speed);
+  }
+}
+
+function handleUserInput(event) {
+  const key = event.key;
+  if (key in menus && currentMenu !== key) {
+    isDeleting = true;
+    typeDeleteAnimation(() => {
+      currentMenu = key;
+      currentText = menus[key];
+      index = 0;
+      typeDeleteAnimation();
+    });
+  } else if ((key === "B" || key === "b") && currentMenu !== "main") {
+    isDeleting = true;
+    typeDeleteAnimation(() => {
+      currentMenu = "main";
+      currentText = menus.main;
+      index = 0;
+      typeDeleteAnimation();
+    });
+  }
+}
+
+document.addEventListener("keydown", handleUserInput);
+
+currentText = menus.main;
+typeDeleteAnimation();
+</script>
 </html>
