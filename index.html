@@ -1,380 +1,265 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio</title>
-    <link
-    rel="icon"
-    href="https://skaitech.al/wp-content/uploads/2020/10/cropped-logo-black-copy.png"
-    type="image/png"
-  />
-
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
     <style>
-body {
-  font-family: "Courier New", Courier, monospace;
-  background-color: #282c34;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  overflow: hidden;
-  margin: 0;
-}
+      /* Header */
+      .large-header {
+        position: relative;
+        width: 100%;
+        background: #000;
+        overflow: hidden;
+        background-size: cover;
+        background-position: center center;
+        z-index: 1;
+      }
 
-.terminal {
-  background-color: #000;
-  border-radius: 10px;
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
-  margin: 0;
-  position: relative;
-}
+      .main-title {
+        position: absolute;
+        margin: 0;
+        padding: 0;
+        color: #f9f1e9;
+        text-align: center;
+        top: 50%;
+        left: 50%;
+        -webkit-transform: translate3d(-50%, -50%, 0);
+        transform: translate3d(-50%, -50%, 0);
+      }
 
-.header {
-  background-color: #1e1e1e;
-  padding: 5px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2); 
-}
+      .demo-1 .main-title {
+        text-transform: uppercase;
+        font-size: 4.2em;
+        letter-spacing: 0.1em;
+      }
 
-.buttons {
-  display: flex;
-  gap: 5px;
-}
+      .main-title .thin {
+        font-weight: 200;
+      }
 
-.close,
-.minimize,
-.expand {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  transition: 0.3s ease; 
-}
-
-.close {
-  background-color: #ff5f57;
-}
-
-.close:hover {
-  background-color: #d64242; 
-}
-
-.minimize {
-  background-color: #ffbd2e;
-}
-
-.minimize:hover {
-  background-color: #e5a526; 
-}
-
-.expand {
-  background-color: #27c93f;
-}
-
-.expand:hover {
-  background-color: #219834; 
-}
-
-.ascii-art {
-  font-size: 1vw; 
-  white-space: pre-wrap; 
-  word-wrap: break-word;
-}
-
-@media only screen and (max-width: 600px) {
-  .ascii-art {
-    font-size: 1.7vw;
-  }
-}
-
-@media only screen and (min-width: 601px) and (max-width: 900px) {
-  .ascii-art {
-    font-size: 1.6vw;
-  }
-}
-
-@media only screen and (min-width: 901px) {
-  .ascii-art {
-    font-size: 1vw;
-  }
-}
-
-.content {
-  padding: 20px;
-  color: #00ff00;
-  height: calc(100vh - 50px); 
-  overflow-y: auto; 
-}
-
-.cursor {
-  background-color: #00ff00;
-  animation: blink 1s infinite;
-}
-
-@keyframes blink {
-  0%,
-  49% {
-    opacity: 1;
-  }
-  50%,
-  100% {
-    opacity: 0;
-  }
-}
-
-.header {
-  background-color: #282c34;
-  padding: 8px 12px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
-  position: sticky;
-  top: 0;
-  height: 14px;
-}
-
-.buttons {
-  display: flex;
-  gap: 8px; 
-}
-
-.close,
-.minimize,
-.expand {
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  transition: 0.3s ease;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2); 
-}
-
-.close {
-  background-color: #fc5f56;
-}
-
-.close:hover {
-  background-color: #eb4d44;
-}
-
-.minimize {
-  background-color: #fecb2e;
-}
-
-.minimize:hover {
-  background-color: #e4b526; 
-}
-
-.expand {
-  background-color: #2bca3b;
-}
-
-.expand:hover {
-  background-color: #24ad31; 
-}
-
-a {
-  color: #00ff00;
-  text-decoration: none;
-  border-bottom: 1px dashed #00ff00;
-  transition: 0.3s ease;
-}
-
-a:hover {
-  color: #00cc00;
-  background-color: #222;
-  border-bottom: 1px solid #00cc00;
-}
-
-span[onclick]:hover {
-  cursor: pointer;
-  background-color: rgba(0, 255, 0, 0.2);
-}
-
+      @media only screen and (max-width: 768px) {
+        .demo-1 .main-title {
+          font-size: 3em;
+        }
+      }
     </style>
-</head>
-<body>
-    <div class="terminal">
-
-        <div class="content">
-            
-<p class="output">
-    Last login: <span id="dateTime"></span>
-    <pr class="ascii-art">
-    
-    _ _|                 |   __ __|_) |       
-      |  __ \   _ \  __| __|    |   | |  _` | 
-      |  |   |  __/ |    |      |   | | (   | 
-    ___|_|  _|\___|_|   \__|   _|  _|_|\__,_| 
-                                              
-
-    </pr  
-</p>
-            
-<p>
-    Software Developer | Python, Django, JavaScript | Docker | Cloud Computing | Web Development
-    <br><br>
-</p> 
-            
-<p>
-    Check out my <a href="https://github.com/inerttila">Github</a>, <a href="https://al.linkedin.com/in/inerttila">Linkedin</a>, <a href="https://hub.docker.com/u/inert">Docker Hub</a><br><br>
-</p>
-<p class="typing"></p>
-<p class="input"><span class="prompt">$</span> <span class="cursor"></span></p>
-
-        </div>
+  </head>
+  <body>
+    <div id="large-header" class="large-header">
+      <canvas id="demo-canvas"></canvas>
+      <h1 class="main-title">Connect <span class="thin">Three</span></h1>
     </div>
-</body>
-<script>
-    const currentDate = new Date();
-const formattedDate =
-  currentDate.toDateString().split(" ").slice(0, 3).join(" ") +
-  " " +
-  currentDate.toTimeString().split(" ")[0].split(":").slice(0, 3).join(":");
-document.getElementById("dateTime").innerHTML = formattedDate;
-const typingElement = document.querySelector(".typing");
-let index = 0;
-let currentText = "";
-let isDeleting = false;
-let currentMenu = "main";
+    <script>
+      (function () {
+        var width,
+          height,
+          largeHeader,
+          canvas,
+          ctx,
+          points,
+          target,
+          animateHeader = true;
 
-const menus = {
-  
-  main: `Select a menu:<br><br><span onclick="handleMenuClick('1')">[1] Who am I?</span><br><span onclick="handleMenuClick('2')">[2] My Works</span><br><span onclick="handleMenuClick('3')">[3] My Desktop App </span><br><span onclick="handleMenuClick('4')">[4] Contact Me </span> `,
- 
-  1: `Who am I?<br><br>  I'm a software developer with a strong foundation in Python, JavaScript, and Django. My passion lies in building high-performance applications and utilizing Docker for efficient deployment. Experienced in cloud computing and web development, I bring versatility to every project. Open to new opportunities in the world of technology.<br><br><span onclick="handleMenuClick('B')">[B] Back</span>`,
-  
-  2: `Some of my Projects:<br><br>
-- <strong>SKAITECH Cloud</strong>: Survey, inspect, create orthomosaics, 3D point clouds, digital surface models, contours, multispectral maps and many more.<a href="https://cloud.skaitech.al/login/" target="_blank">[Cloud Skaitech]</a><br><br>
-- <strong>Object-Detection-YoloV5 (Private)</strong>: Object-Detection-Yolov5 is a Django WebApp integrating YoloV5 for real-time object detection. Harness the power of Python, Django, and YoloV5 .<a href="https://github.com/inerttila/Object-Detection-YoloV5.git" target="_blank">[GitHub]</a><br><br>
-- <strong>Excel-Data-App</strong>: Timesheet Management Application A Python and C++-based timesheet management application for tracking work hours and tasks.  <a href="https://github.com/inerttila/Excel-Data-App.git" target="_blank">[GitHub]</a><br><br>
-- <strong>File-Transfer-Server</strong>:File Transfer Server is a simple Flask-based web application for uploading files.<a href="https://github.com/inerttila/File-Transfer-Server.git" target="_blank">[GitHub]</a><br><br>
-- <strong>Django-Vue</strong>: Private Suggestions Portal collaboratively by utilizing Django Rest Framework 3 for the backend and VueJS 3, with Pinia for the frontend.<a href="https://github.com/inerttila/Django-Vue.git" target="_blank">[GitHub]</a><br><br>
-- <strong>Online-Code-Editor</strong>: Online Code Editor Project This project is an online code editor that allows users to write and run Python and JavaScript code within a web browser. <a href="https://github.com/inerttila/Online-Code-Editor.git" target="_blank">[GitHub]</a><br><br>
-- <strong>Registration-System</strong>: The "Qytetar" Management Application is a C++ program for managing and storing information about citizens. <a href="https://github.com/inerttila/Registration-System.git" target="_blank">[GitHub]</a><br><br><span onclick="handleMenuClick('B')">[B] Back</span>`,
+        // Main
+        initHeader();
+        initAnimation();
+        addListeners();
 
-  3: `My Desktop App:<br><br> Timesheet Management Application <a href="https://drive.google.com/file/d/1dSjV0SLgc-BXZlFEGQqjRl5wag4Oxric/view" target="_blank">[Google Drive]</a><br><br><span onclick="handleMenuClick('B')">[B] Back</span>`,
-  4: `Contact:<br>- Email: <a href="mailto:inert.etila@gmail.com">inert.etila@gmail.com</a><br>- Linkedin: <a href="https://al.linkedin.com/in/inerttila">@inerttia</a><br><br><span onclick="handleMenuClick('B')">[B] Back</span>`,
-};
+        function initHeader() {
+          width = window.innerWidth;
+          height = window.innerHeight;
+          target = { x: width / 2, y: height / 2 };
 
-function handleMenuClick(menuKey) {
-  if (menuKey in menus && currentMenu !== menuKey) {
-    isDeleting = true;
-    typeDeleteAnimation(() => {
-      currentMenu = menuKey;
-      currentText = menus[menuKey];
-      index = 0;
-      typeDeleteAnimation();
-    });
-  } else if ((menuKey === "B" || menuKey === "b") && currentMenu !== "main") {
-    isDeleting = true;
-    typeDeleteAnimation(() => {
-      currentMenu = "main";
-      currentText = menus.main;
-      index = 0;
-      typeDeleteAnimation();
-    });
-  }
-}
-function typeDeleteAnimation(callback) {
-  let speed = 7; 
-  let deleteSpeed = 3; 
-  if (currentMenu === "1" || currentMenu === "3") {
-    speed = 1; 
-    deleteSpeed = 1; 
-  }
+          largeHeader = document.getElementById("large-header");
+          largeHeader.style.height = height + "px";
 
-  if (isDeleting && typingElement.innerHTML !== "") {
-    if (currentText.charAt(index - 1) === ">") {
-      const openTagIndex = currentText.lastIndexOf("<", index);
-      const tagName = currentText.substring(
-        openTagIndex + 1,
-        currentText.indexOf(" ", openTagIndex)
-      );
-      const startTagIndex = currentText.lastIndexOf(`</${tagName}>`, index);
-      index = startTagIndex;
-    } else {
-      index--;
-    }
-    currentText = currentText.slice(0, index);
-    typingElement.innerHTML = currentText;
+          canvas = document.getElementById("demo-canvas");
+          canvas.width = width;
+          canvas.height = height;
+          ctx = canvas.getContext("2d");
 
-    setTimeout(() => typeDeleteAnimation(callback), deleteSpeed);
-  } else if (isDeleting) {
-    isDeleting = false;
-    if (callback) callback();
-  } else if (!isDeleting && index < currentText.length) {
-    if (currentText.charAt(index) === "<") {
-      if (currentText.substr(index, 4) === "<br>") {
-        const br = document.createElement("br");
-        typingElement.appendChild(br);
-        index += 4;
-      } else {
-        const closingTagIndex = currentText.indexOf(">", index);
-        const tagName = currentText
-          .substring(index + 1, closingTagIndex)
-          .split(" ")[0];
-        const endTagIndex =
-          currentText.indexOf(`</${tagName}>`, index) + `</${tagName}>`.length;
-        const outerHTML = currentText.substring(index, endTagIndex);
-        const tempDiv = document.createElement("div");
-        tempDiv.innerHTML = outerHTML;
-        const childElement = tempDiv.firstChild;
+          // create points
+          points = [];
+          for (var x = 0; x < width; x = x + width / 20) {
+            for (var y = 0; y < height; y = y + height / 20) {
+              var px = x + (Math.random() * width) / 20;
+              var py = y + (Math.random() * height) / 20;
+              var p = { x: px, originX: px, y: py, originY: py };
+              points.push(p);
+            }
+          }
 
-        if (tagName === "a") {
-          childElement.target = "_blank";
-          speed = 1; // Faster typing for <a> tag
-        } else if (tagName === "span") {
-          childElement.onclick = function () {
-            const menuKey = childElement
-              .getAttribute("onclick")
-              .replace("handleMenuClick('", "")
-              .replace("')", "");
-            handleMenuClick(menuKey);
-          };
-          speed = 1; 
+          // for each point find the 5 closest points
+          for (var i = 0; i < points.length; i++) {
+            var closest = [];
+            var p1 = points[i];
+            for (var j = 0; j < points.length; j++) {
+              var p2 = points[j];
+              if (!(p1 == p2)) {
+                var placed = false;
+                for (var k = 0; k < 5; k++) {
+                  if (!placed) {
+                    if (closest[k] == undefined) {
+                      closest[k] = p2;
+                      placed = true;
+                    }
+                  }
+                }
+
+                for (var k = 0; k < 5; k++) {
+                  if (!placed) {
+                    if (getDistance(p1, p2) < getDistance(p1, closest[k])) {
+                      closest[k] = p2;
+                      placed = true;
+                    }
+                  }
+                }
+              }
+            }
+            p1.closest = closest;
+          }
+
+          // assign a circle to each point
+          for (var i in points) {
+            var c = new Circle(
+              points[i],
+              2 + Math.random() * 2,
+              "rgba(255,255,255,0.3)"
+            );
+            points[i].circle = c;
+          }
         }
 
-        typingElement.appendChild(childElement);
-        index = endTagIndex;
-      }
-    } else {
-      typingElement.innerHTML += currentText.charAt(index);
-      index++;
-    }
+        // Event handling
+        function addListeners() {
+          if (!("ontouchstart" in window)) {
+            window.addEventListener("mousemove", mouseMove);
+          }
+          window.addEventListener("scroll", scrollCheck);
+          window.addEventListener("resize", resize);
+        }
 
-    setTimeout(typeDeleteAnimation, speed);
-  }
-}
+        function mouseMove(e) {
+          var posx = (posy = 0);
+          if (e.pageX || e.pageY) {
+            posx = e.pageX;
+            posy = e.pageY;
+          } else if (e.clientX || e.clientY) {
+            posx =
+              e.clientX +
+              document.body.scrollLeft +
+              document.documentElement.scrollLeft;
+            posy =
+              e.clientY +
+              document.body.scrollTop +
+              document.documentElement.scrollTop;
+          }
+          target.x = posx;
+          target.y = posy;
+        }
 
-function handleUserInput(event) {
-  const key = event.key;
-  if (key in menus && currentMenu !== key) {
-    isDeleting = true;
-    typeDeleteAnimation(() => {
-      currentMenu = key;
-      currentText = menus[key];
-      index = 0;
-      typeDeleteAnimation();
-    });
-  } else if ((key === "B" || key === "b") && currentMenu !== "main") {
-    isDeleting = true;
-    typeDeleteAnimation(() => {
-      currentMenu = "main";
-      currentText = menus.main;
-      index = 0;
-      typeDeleteAnimation();
-    });
-  }
-}
+        function scrollCheck() {
+          if (document.body.scrollTop > height) animateHeader = false;
+          else animateHeader = true;
+        }
 
-document.addEventListener("keydown", handleUserInput);
+        function resize() {
+          width = window.innerWidth;
+          height = window.innerHeight;
+          largeHeader.style.height = height + "px";
+          canvas.width = width;
+          canvas.height = height;
+        }
 
-currentText = menus.main;
-typeDeleteAnimation();
-</script>
+        // animation
+        function initAnimation() {
+          animate();
+          for (var i in points) {
+            shiftPoint(points[i]);
+          }
+        }
+
+        function animate() {
+          if (animateHeader) {
+            ctx.clearRect(0, 0, width, height);
+            for (var i in points) {
+              // detect points in range
+              if (Math.abs(getDistance(target, points[i])) < 4000) {
+                points[i].active = 0.3;
+                points[i].circle.active = 0.6;
+              } else if (Math.abs(getDistance(target, points[i])) < 20000) {
+                points[i].active = 0.1;
+                points[i].circle.active = 0.3;
+              } else if (Math.abs(getDistance(target, points[i])) < 40000) {
+                points[i].active = 0.02;
+                points[i].circle.active = 0.1;
+              } else {
+                points[i].active = 0;
+                points[i].circle.active = 0;
+              }
+
+              drawLines(points[i]);
+              points[i].circle.draw();
+            }
+          }
+          requestAnimationFrame(animate);
+        }
+
+        function shiftPoint(p) {
+          TweenLite.to(p, 1 + 1 * Math.random(), {
+            x: p.originX - 50 + Math.random() * 100,
+            y: p.originY - 50 + Math.random() * 100,
+            ease: Circ.easeInOut,
+            onComplete: function () {
+              shiftPoint(p);
+            },
+          });
+        }
+
+        // Canvas manipulation
+        function drawLines(p) {
+          if (!p.active) return;
+          for (var i in p.closest) {
+            ctx.beginPath();
+            ctx.moveTo(p.x, p.y);
+            ctx.lineTo(p.closest[i].x, p.closest[i].y);
+            ctx.strokeStyle = "rgba(156,217,249," + p.active + ")";
+            ctx.stroke();
+          }
+        }
+
+        function Circle(pos, rad, color) {
+          var _this = this;
+
+          // constructor
+          (function () {
+            _this.pos = pos || null;
+            _this.radius = rad || null;
+            _this.color = color || null;
+          })();
+
+          this.draw = function () {
+            if (!_this.active) return;
+            ctx.beginPath();
+            ctx.arc(
+              _this.pos.x,
+              _this.pos.y,
+              _this.radius,
+              0,
+              2 * Math.PI,
+              false
+            );
+            ctx.fillStyle = "rgba(156,217,249," + _this.active + ")";
+            ctx.fill();
+          };
+        }
+
+        // Util
+        function getDistance(p1, p2) {
+          return Math.pow(p1.x - p2.x, 2) + Math.pow(p1.y - p2.y, 2);
+        }
+      })();
+    </script>
+  </body>
 </html>
