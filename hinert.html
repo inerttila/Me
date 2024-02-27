@@ -1,355 +1,350 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ME</title>
     <link
-    rel="icon"
-    href="https://skaitech.al/wp-content/uploads/2020/10/cropped-logo-black-copy.png"
-    type="image/png"
-  />
+      rel="icon"
+      href="https://skaitech.al/wp-content/uploads/2020/10/cropped-logo-black-copy.png"
+      type="image/png"
+    />
 
     <style>
-body {
-  font-family: "Courier New", Courier, monospace;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  overflow: hidden;
-  margin: 0;
-  background-color: var(--black);
-  color: var(--white);
-  z-index: 9999999999;
-}
+      body {
+        font-family: "Courier New", Courier, monospace;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        overflow: hidden;
+        margin: 0;
+        background-color: var(--black);
+        color: var(--white);
+        z-index: 9999999999;
+      }
 
-.terminal {
-  border-radius: 10px;
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
-  margin: 0;
-  position: relative;
-}
+      .terminal {
+        border-radius: 10px;
+        width: 100vw;
+        height: 100vh;
+        overflow: hidden;
+        margin: 0;
+        position: relative;
+      }
 
-.header {
-  padding: 5px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2); 
-}
+      .header {
+        padding: 5px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+      }
 
-.buttons {
-  display: flex;
-  gap: 5px;
-}
+      .buttons {
+        display: flex;
+        gap: 5px;
+      }
 
-.close,
-.minimize,
-.expand {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  transition: 0.3s ease; 
-}
+      .close,
+      .minimize,
+      .expand {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        transition: 0.3s ease;
+      }
 
-.close {
-  background-color: #ff5f57;
-}
+      .close {
+        background-color: #ff5f57;
+      }
 
-.close:hover {
-  background-color: #d64242; 
-}
+      .close:hover {
+        background-color: #d64242;
+      }
 
-.minimize {
-  background-color: #ffbd2e;
-}
+      .minimize {
+        background-color: #ffbd2e;
+      }
 
-.minimize:hover {
-  background-color: #e5a526; 
-}
+      .minimize:hover {
+        background-color: #e5a526;
+      }
 
-.expand {
-  background-color: #27c93f;
-}
+      .expand {
+        background-color: #27c93f;
+      }
 
-.expand:hover {
-  background-color: #219834; 
-}
+      .expand:hover {
+        background-color: #219834;
+      }
 
-.ascii-art {
-  font-size: 1vw; 
-  white-space: pre-wrap; 
-  word-wrap: break-word;
-}
+      .ascii-art {
+        font-size: 1vw;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+      }
 
-@media only screen and (max-width: 600px) {
-  .ascii-art {
-    font-size: 1.7vw;
-  }
-}
+      @media only screen and (max-width: 600px) {
+        .ascii-art {
+          font-size: 1.7vw;
+        }
+      }
 
-@media only screen and (min-width: 601px) and (max-width: 900px) {
-  .ascii-art {
-    font-size: 1.6vw;
-  }
-}
+      @media only screen and (min-width: 601px) and (max-width: 900px) {
+        .ascii-art {
+          font-size: 1.6vw;
+        }
+      }
 
-@media only screen and (min-width: 901px) {
-  .ascii-art {
-    font-size: 1vw;
-  }
-}
+      @media only screen and (min-width: 901px) {
+        .ascii-art {
+          font-size: 1vw;
+        }
+      }
 
-.content {
-  padding: 20px;
-  color: #00ff00;
-  height: calc(100vh - 50px); 
-  overflow-y: auto; 
-}
+      .content {
+        padding: 20px;
+        color: #00ff00;
+        height: calc(100vh - 50px);
+        overflow-y: auto;
+      }
 
-.cursor {
-  background-color: #00ff00;
-  animation: blink 1s infinite;
-}
+      .cursor {
+        background-color: #00ff00;
+        animation: blink 1s infinite;
+      }
 
-@keyframes blink {
-  0%,
-  49% {
-    opacity: 1;
-  }
-  50%,
-  100% {
-    opacity: 0;
-  }
-}
+      @keyframes blink {
+        0%,
+        49% {
+          opacity: 1;
+        }
+        50%,
+        100% {
+          opacity: 0;
+        }
+      }
 
-.header {
-  background-color: #282c34;
-  padding: 8px 12px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
-  position: sticky;
-  top: 0;
-  height: 14px;
-}
+      .header {
+        background-color: #282c34;
+        padding: 8px 12px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+        position: sticky;
+        top: 0;
+        height: 14px;
+      }
 
-.buttons {
-  display: flex;
-  gap: 8px; 
-}
+      .buttons {
+        display: flex;
+        gap: 8px;
+      }
 
-.close,
-.minimize,
-.expand {
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  transition: 0.3s ease;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2); 
-}
+      .close,
+      .minimize,
+      .expand {
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        transition: 0.3s ease;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+      }
 
-.close {
-  background-color: #fc5f56;
-}
+      .close {
+        background-color: #fc5f56;
+      }
 
-.close:hover {
-  background-color: #eb4d44;
-}
+      .close:hover {
+        background-color: #eb4d44;
+      }
 
-.minimize {
-  background-color: #fecb2e;
-}
+      .minimize {
+        background-color: #fecb2e;
+      }
 
-.minimize:hover {
-  background-color: #e4b526; 
-}
+      .minimize:hover {
+        background-color: #e4b526;
+      }
 
-.expand {
-  background-color: #2bca3b;
-}
+      .expand {
+        background-color: #2bca3b;
+      }
 
-.expand:hover {
-  background-color: #24ad31; 
-}
+      .expand:hover {
+        background-color: #24ad31;
+      }
 
-a {
-  color: #00ff00;
-  text-decoration: none;
-  border-bottom: 1px dashed #00ff00;
-  transition: 0.3s ease;
-}
+      a {
+        color: #00ff00;
+        text-decoration: none;
+        border-bottom: 1px dashed #00ff00;
+        transition: 0.3s ease;
+      }
 
-a:hover {
-  color: #00cc00;
-  background-color: #222;
-  border-bottom: 1px solid #00cc00;
-}
+      a:hover {
+        color: #00cc00;
+        background-color: #222;
+        border-bottom: 1px solid #00cc00;
+      }
 
-span[onclick]:hover {
-  cursor: pointer;
-  background-color: rgba(0, 255, 0, 0.2);
-}
+      span[onclick]:hover {
+        cursor: pointer;
+        background-color: rgba(0, 255, 0, 0.2);
+      }
 
+      :root {
+        --black: #000000;
+        --aqua: #86fbfb;
+        --white: #f7f8fa;
+        --font-size: 1.3rem;
+        --mono: "Oxygen mono", monospace;
+        --sans: Oxygen, sans-serif;
+      }
+      html {
+        box-sizing: border-box;
+      }
+      *,
+      *::before,
+      *::after {
+        box-sizing: inherit;
+      }
 
-
-:root {
-  --black: #000000;
-  --hotmag: #ff17e4;
-  --magenta: #e310cb;
-  --aqua: #86fbfb;
-  --white: #f7f8fa;
-  --font-size: 1.3rem;
-  --mono: "Oxygen mono", monospace;
-  --sans: Oxygen, sans-serif;
-}
-html {
-  box-sizing: border-box;
-}
-*,
-*::before,
-*::after {
-  box-sizing: inherit;
-}
-
-h1 {
-  margin: 0;
-  font-family: var(--sans);
-  font-size: 230%;
-}
-a:hover {
-  color: var(--hotmag);
-  text-decoration: none;
-}
-.gradient {
-  background: linear-gradient(
-    90deg,
-    rgba(255, 23, 228, 1) 0%,
-    rgba(134, 251, 251, 1) 100%
-  );
-  height: 2px;
-}
-nav {
-  font-size: 80%;
-  padding: 4rem 1rem;
-}
-nav ul {
-  margin: 0;
-  padding: 0;
-  list-style-type: none;
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: center;
-  align-items: center;
-  gap: 2rem;
-}
-nav li:first-child {
-  flex-basis: 100%;
-  text-align: center;
-}
-nav [class*="fa-"] {
-  font-size: 150%;
-  color: var(--aqua);
-}
-nav h1 [class*="fa-"] {
-  font-size: 100%;
-  color: var(--aqua);
-}
-nav a {
-  color: white;
-  text-decoration: none;
-  display: block;
-}
-nav a:hover,
-nav [class*="fa-"]:hover {
-  color: #03e9f4;
-}
-@media (min-width: 850px) {
-  nav {
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-  nav li:first-child {
-    flex-basis: auto;
-    text-align: left;
-    margin-right: auto;
-  }
-}
-canvas {
-  position: fixed;
-  top: 0;
-  left: inherit;
-  right: inherit;
-  bottom: 0;
-  z-index: -1;
-}
-@media (max-width: 850px) {
-  nav {
-    padding: 2rem 0.5rem;
-  }
-}
-
+      h1 {
+        margin: 0;
+        font-family: var(--sans);
+        font-size: 230%;
+      }
+      a:hover {
+        color: var(--hotmag);
+        text-decoration: none;
+      }
+      .gradient {
+        background: linear-gradient(90deg, rgba(134, 251, 251, 1) 100%);
+        height: 2px;
+      }
+      nav {
+        font-size: 80%;
+        padding: 4rem 1rem;
+      }
+      nav ul {
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+      }
+      nav li:first-child {
+        flex-basis: 100%;
+        text-align: center;
+      }
+      nav [class*="fa-"] {
+        font-size: 150%;
+        color: var(--aqua);
+      }
+      nav h1 [class*="fa-"] {
+        font-size: 100%;
+        color: var(--aqua);
+      }
+      nav a {
+        color: white;
+        text-decoration: none;
+        display: block;
+      }
+      nav a:hover,
+      nav [class*="fa-"]:hover {
+        color: #03e9f4;
+      }
+      @media (min-width: 850px) {
+        nav {
+          max-width: 1200px;
+          margin: 0 auto;
+        }
+        nav li:first-child {
+          flex-basis: auto;
+          text-align: left;
+          margin-right: auto;
+        }
+      }
+      canvas {
+        position: fixed;
+        top: 0;
+        left: inherit;
+        right: inherit;
+        bottom: 0;
+        z-index: -1;
+      }
+      @media (max-width: 850px) {
+        nav {
+          padding: 2rem 0.5rem;
+        }
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <canvas id="canvas"></canvas>
 
-
     <div class="terminal">
+      <div class="content">
+        <p class="output">Last login: <span id="dateTime"></span></p>
 
-        <div class="content">
-            
-<p class="output">
-    Last login: <span id="dateTime"></span>
-    <pr class="ascii-art">
-    
-    _ _|                 |   __ __|_) |       
-      |  __ \   _ \  __| __|    |   | |  _` | 
-      |  |   |  __/ |    |      |   | | (   | 
-    ___|_|  _|\___|_|   \__|   _|  _|_|\__,_| 
-                                              
+        <pre>
 
-    </pr  
-</p>
-            
-<p>
-    Software Developer | Python, Django, JavaScript | Docker | Cloud Computing | Web Development
-    <br><br>
-</p> 
-            
-<p>
-    Check out my <a href="https://github.com/inerttila">Github</a>, <a href="https://al.linkedin.com/in/inerttila">Linkedin</a>, <a href="https://hub.docker.com/u/inert">Docker Hub</a><br><br>
-</p>
-<p class="typing"></p>
-<p class="input"><span class="prompt">$</span> <span class="cursor"></span></p>
 
-        </div>
+
+        _ _|                 |   __ __|_) |       
+          |  __ \   _ \  __| __|    |   | |  _` | 
+          |  |   |  __/ |    |      |   | | (   | 
+        ___|_|  _|\___|_|   \__|   _|  _|_|\__,_| 
+
+
+
+              </pre
+        >
+
+        <p>
+          Software Developer | Python, Django, JavaScript | Docker | Cloud
+          Computing | Web Development
+          <br /><br />
+        </p>
+
+        <p>
+          Check out my <a href="https://github.com/inerttila">Github</a>,
+          <a href="https://al.linkedin.com/in/inerttila">Linkedin</a>,
+          <a href="https://hub.docker.com/u/inert">Docker Hub</a><br /><br />
+        </p>
+        <p class="typing"></p>
+        <p class="input">
+          <span class="prompt">$</span> <span class="cursor"></span>
+        </p>
+      </div>
     </div>
-</body>
-<script>
-    const currentDate = new Date();
-const formattedDate =
-  currentDate.toDateString().split(" ").slice(0, 3).join(" ") +
-  " " +
-  currentDate.toTimeString().split(" ")[0].split(":").slice(0, 3).join(":");
-document.getElementById("dateTime").innerHTML = formattedDate;
-const typingElement = document.querySelector(".typing");
-let index = 0;
-let currentText = "";
-let isDeleting = false;
-let currentMenu = "main";
+  </body>
 
-const menus = {
-  
-  main: `Select a menu:<br><br><span onclick="handleMenuClick('1')">[1] Who am I?</span><br><span onclick="handleMenuClick('2')">[2] My Works</span><br><span onclick="handleMenuClick('3')">[3] My Desktop App </span><br><span onclick="handleMenuClick('4')">[4] Contact Me </span> `,
- 
-  1: `Who am I?<br><br>  I'm a software developer with a strong foundation in Python, JavaScript, and Django. My passion lies in building high-performance applications and utilizing Docker for efficient deployment. Experienced in cloud computing and web development, I bring versatility to every project. Open to new opportunities in the world of technology.<br><br><span onclick="handleMenuClick('B')">[B] Back</span>`,
-  
-  2: `Some of my Projects:<br><br>
+  <script>
+    const currentDate = new Date();
+    const formattedDate =
+      currentDate.toDateString().split(" ").slice(0, 3).join(" ") +
+      " " +
+      currentDate.toTimeString().split(" ")[0].split(":").slice(0, 3).join(":");
+    document.getElementById("dateTime").innerHTML = formattedDate;
+    const typingElement = document.querySelector(".typing");
+    let index = 0;
+    let currentText = "";
+    let isDeleting = false;
+    let currentMenu = "main";
+
+    const menus = {
+      main: `Select a menu:<br><br><span onclick="handleMenuClick('1')">[1] Who am I?</span><br><span onclick="handleMenuClick('2')">[2] My Works</span><br><span onclick="handleMenuClick('3')">[3] My Desktop App </span><br><span onclick="handleMenuClick('4')">[4] Contact Me </span> `,
+
+      1: `Who am I?<br><br>  I'm a software developer with a strong foundation in Python, JavaScript, and Django. My passion lies in building high-performance applications and utilizing Docker for efficient deployment. Experienced in cloud computing and web development, I bring versatility to every project. Open to new opportunities in the world of technology.<br><br><span onclick="handleMenuClick('B')">[B] Back</span>`,
+
+      2: `Some of my Projects:<br><br>
 - <strong>SKAITECH Cloud</strong>: Survey, inspect, create orthomosaics, 3D point clouds, digital surface models, contours, multispectral maps and many more.<a href="https://cloud.skaitech.al/login/" target="_blank">[Cloud Skaitech]</a><br><br>
 - <strong>Object-Detection-YoloV5 (Private)</strong>: Object-Detection-Yolov5 is a Django WebApp integrating YoloV5 for real-time object detection. Harness the power of Python, Django, and YoloV5 .<a href="https://github.com/inerttila/Object-Detection-YoloV5.git" target="_blank">[GitHub]</a><br><br>
 - <strong>Excel-Data-App</strong>: Timesheet Management Application A Python and C++-based timesheet management application for tracking work hours and tasks.  <a href="https://github.com/inerttila/Excel-Data-App.git" target="_blank">[GitHub]</a><br><br>
@@ -358,201 +353,204 @@ const menus = {
 - <strong>Online-Code-Editor</strong>: Online Code Editor Project This project is an online code editor that allows users to write and run Python and JavaScript code within a web browser. <a href="https://github.com/inerttila/Online-Code-Editor.git" target="_blank">[GitHub]</a><br><br>
 - <strong>Registration-System</strong>: The "Qytetar" Management Application is a C++ program for managing and storing information about citizens. <a href="https://github.com/inerttila/Registration-System.git" target="_blank">[GitHub]</a><br><br><span onclick="handleMenuClick('B')">[B] Back</span>`,
 
-  3: `My Desktop App:<br><br> Timesheet Management Application <a href="https://drive.google.com/file/d/1dSjV0SLgc-BXZlFEGQqjRl5wag4Oxric/view" target="_blank">[Google Drive]</a><br><br><span onclick="handleMenuClick('B')">[B] Back</span>`,
-  4: `Contact:<br>- Email: <a href="mailto:inert.etila@gmail.com">inert.etila@gmail.com</a><br>- Linkedin: <a href="https://al.linkedin.com/in/inerttila">@inerttia</a><br><br><span onclick="handleMenuClick('B')">[B] Back</span>`,
-};
+      3: `My Desktop App:<br><br> Timesheet Management Application <a href="https://drive.google.com/file/d/1dSjV0SLgc-BXZlFEGQqjRl5wag4Oxric/view" target="_blank">[Google Drive]</a><br><br><span onclick="handleMenuClick('B')">[B] Back</span>`,
+      4: `Contact:<br>- Email: <a href="mailto:inert.etila@gmail.com">inert.etila@gmail.com</a><br>- Linkedin: <a href="https://al.linkedin.com/in/inerttila">@inerttia</a><br><br><span onclick="handleMenuClick('B')">[B] Back</span>`,
+    };
 
-function handleMenuClick(menuKey) {
-  if (menuKey in menus && currentMenu !== menuKey) {
-    isDeleting = true;
-    typeDeleteAnimation(() => {
-      currentMenu = menuKey;
-      currentText = menus[menuKey];
-      index = 0;
-      typeDeleteAnimation();
-    });
-  } else if ((menuKey === "B" || menuKey === "b") && currentMenu !== "main") {
-    isDeleting = true;
-    typeDeleteAnimation(() => {
-      currentMenu = "main";
-      currentText = menus.main;
-      index = 0;
-      typeDeleteAnimation();
-    });
-  }
-}
-function typeDeleteAnimation(callback) {
-  let speed = 7; 
-  let deleteSpeed = 3; 
-  if (currentMenu === "1" || currentMenu === "3") {
-    speed = 1; 
-    deleteSpeed = 1; 
-  }
-
-  if (isDeleting && typingElement.innerHTML !== "") {
-    if (currentText.charAt(index - 1) === ">") {
-      const openTagIndex = currentText.lastIndexOf("<", index);
-      const tagName = currentText.substring(
-        openTagIndex + 1,
-        currentText.indexOf(" ", openTagIndex)
-      );
-      const startTagIndex = currentText.lastIndexOf(`</${tagName}>`, index);
-      index = startTagIndex;
-    } else {
-      index--;
+    function handleMenuClick(menuKey) {
+      if (menuKey in menus && currentMenu !== menuKey) {
+        isDeleting = true;
+        typeDeleteAnimation(() => {
+          currentMenu = menuKey;
+          currentText = menus[menuKey];
+          index = 0;
+          typeDeleteAnimation();
+        });
+      } else if (
+        (menuKey === "B" || menuKey === "b") &&
+        currentMenu !== "main"
+      ) {
+        isDeleting = true;
+        typeDeleteAnimation(() => {
+          currentMenu = "main";
+          currentText = menus.main;
+          index = 0;
+          typeDeleteAnimation();
+        });
+      }
     }
-    currentText = currentText.slice(0, index);
-    typingElement.innerHTML = currentText;
+    function typeDeleteAnimation(callback) {
+      let speed = 7;
+      let deleteSpeed = 3;
+      if (currentMenu === "1" || currentMenu === "3") {
+        speed = 1;
+        deleteSpeed = 1;
+      }
 
-    setTimeout(() => typeDeleteAnimation(callback), deleteSpeed);
-  } else if (isDeleting) {
-    isDeleting = false;
-    if (callback) callback();
-  } else if (!isDeleting && index < currentText.length) {
-    if (currentText.charAt(index) === "<") {
-      if (currentText.substr(index, 4) === "<br>") {
-        const br = document.createElement("br");
-        typingElement.appendChild(br);
-        index += 4;
-      } else {
-        const closingTagIndex = currentText.indexOf(">", index);
-        const tagName = currentText
-          .substring(index + 1, closingTagIndex)
-          .split(" ")[0];
-        const endTagIndex =
-          currentText.indexOf(`</${tagName}>`, index) + `</${tagName}>`.length;
-        const outerHTML = currentText.substring(index, endTagIndex);
-        const tempDiv = document.createElement("div");
-        tempDiv.innerHTML = outerHTML;
-        const childElement = tempDiv.firstChild;
+      if (isDeleting && typingElement.innerHTML !== "") {
+        if (currentText.charAt(index - 1) === ">") {
+          const openTagIndex = currentText.lastIndexOf("<", index);
+          const tagName = currentText.substring(
+            openTagIndex + 1,
+            currentText.indexOf(" ", openTagIndex)
+          );
+          const startTagIndex = currentText.lastIndexOf(`</${tagName}>`, index);
+          index = startTagIndex;
+        } else {
+          index--;
+        }
+        currentText = currentText.slice(0, index);
+        typingElement.innerHTML = currentText;
 
-        if (tagName === "a") {
-          childElement.target = "_blank";
-          speed = 1; // Faster typing for <a> tag
-        } else if (tagName === "span") {
-          childElement.onclick = function () {
-            const menuKey = childElement
-              .getAttribute("onclick")
-              .replace("handleMenuClick('", "")
-              .replace("')", "");
-            handleMenuClick(menuKey);
-          };
-          speed = 1; 
+        setTimeout(() => typeDeleteAnimation(callback), deleteSpeed);
+      } else if (isDeleting) {
+        isDeleting = false;
+        if (callback) callback();
+      } else if (!isDeleting && index < currentText.length) {
+        if (currentText.charAt(index) === "<") {
+          if (currentText.substr(index, 4) === "<br>") {
+            const br = document.createElement("br");
+            typingElement.appendChild(br);
+            index += 4;
+          } else {
+            const closingTagIndex = currentText.indexOf(">", index);
+            const tagName = currentText
+              .substring(index + 1, closingTagIndex)
+              .split(" ")[0];
+            const endTagIndex =
+              currentText.indexOf(`</${tagName}>`, index) +
+              `</${tagName}>`.length;
+            const outerHTML = currentText.substring(index, endTagIndex);
+            const tempDiv = document.createElement("div");
+            tempDiv.innerHTML = outerHTML;
+            const childElement = tempDiv.firstChild;
+
+            if (tagName === "a") {
+              childElement.target = "_blank";
+              speed = 1; // Faster typing for <a> tag
+            } else if (tagName === "span") {
+              childElement.onclick = function () {
+                const menuKey = childElement
+                  .getAttribute("onclick")
+                  .replace("handleMenuClick('", "")
+                  .replace("')", "");
+                handleMenuClick(menuKey);
+              };
+              speed = 1;
+            }
+
+            typingElement.appendChild(childElement);
+            index = endTagIndex;
+          }
+        } else {
+          typingElement.innerHTML += currentText.charAt(index);
+          index++;
         }
 
-        typingElement.appendChild(childElement);
-        index = endTagIndex;
+        setTimeout(typeDeleteAnimation, speed);
       }
-    } else {
-      typingElement.innerHTML += currentText.charAt(index);
-      index++;
     }
 
-    setTimeout(typeDeleteAnimation, speed);
-  }
-}
-
-function handleUserInput(event) {
-  const key = event.key;
-  if (key in menus && currentMenu !== key) {
-    isDeleting = true;
-    typeDeleteAnimation(() => {
-      currentMenu = key;
-      currentText = menus[key];
-      index = 0;
-      typeDeleteAnimation();
-    });
-  } else if ((key === "B" || key === "b") && currentMenu !== "main") {
-    isDeleting = true;
-    typeDeleteAnimation(() => {
-      currentMenu = "main";
-      currentText = menus.main;
-      index = 0;
-      typeDeleteAnimation();
-    });
-  }
-}
-
-document.addEventListener("keydown", handleUserInput);
-
-currentText = menus.main;
-typeDeleteAnimation();
-</script>
-<script>
-  const canvas = document.getElementById("canvas");
-const ctx = canvas.getContext("2d");
-
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-
-class Particle {
-  constructor(x, y, speedX, speedY) {
-    this.x = x;
-    this.y = y;
-    this.speedX = speedX;
-    this.speedY = speedY;
-  }
-
-  update() {
-    this.x += this.speedX;
-    this.y += this.speedY;
-
-    if (this.x > canvas.width || this.x < 0) {
-      this.speedX = -this.speedX;
+    function handleUserInput(event) {
+      const key = event.key;
+      if (key in menus && currentMenu !== key) {
+        isDeleting = true;
+        typeDeleteAnimation(() => {
+          currentMenu = key;
+          currentText = menus[key];
+          index = 0;
+          typeDeleteAnimation();
+        });
+      } else if ((key === "B" || key === "b") && currentMenu !== "main") {
+        isDeleting = true;
+        typeDeleteAnimation(() => {
+          currentMenu = "main";
+          currentText = menus.main;
+          index = 0;
+          typeDeleteAnimation();
+        });
+      }
     }
-    if (this.y > canvas.height || this.y < 0) {
-      this.speedY = -this.speedY;
-    }
-  }
 
-  draw() {
-    ctx.beginPath();
-    ctx.arc(this.x, this.y, 2, 0, Math.PI * 2);
-    ctx.fillStyle = "aqua";
-    ctx.fill();
-  }
-}
+    document.addEventListener("keydown", handleUserInput);
 
-const particles = [];
-const numParticles = 30; // Increase the number of particles
+    currentText = menus.main;
+    typeDeleteAnimation();
+  </script>
+  <script>
+    const canvas = document.getElementById("canvas");
+    const ctx = canvas.getContext("2d");
 
-for (let i = 0; i < numParticles; i++) {
-  const x = Math.random() * canvas.width;
-  const y = Math.random() * canvas.height;
-  const speedX = (Math.random() - 0.5) * 1.2;
-  const speedY = (Math.random() - 0.5) * 1.2;
-  particles.push(new Particle(x, y, speedX, speedY));
-}
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
 
-function animate() {
-  requestAnimationFrame(animate);
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
+    class Particle {
+      constructor(x, y, speedX, speedY) {
+        this.x = x;
+        this.y = y;
+        this.speedX = speedX;
+        this.speedY = speedY;
+      }
 
-  for (const particle of particles) {
-    particle.update();
-    particle.draw();
-  }
+      update() {
+        this.x += this.speedX;
+        this.y += this.speedY;
 
-  for (let i = 0; i < particles.length; i++) {
-    for (let j = i + 1; j < particles.length; j++) {
-      const dx = particles[i].x - particles[j].x;
-      const dy = particles[i].y - particles[j].y;
-      const distance = Math.sqrt(dx * dx + dy * dy);
+        if (this.x > canvas.width || this.x < 0) {
+          this.speedX = -this.speedX;
+        }
+        if (this.y > canvas.height || this.y < 0) {
+          this.speedY = -this.speedY;
+        }
+      }
 
-      if (distance < 150) {
-        // Adjust the distance threshold for connections
-        ctx.strokeStyle = "rgba(157, 212, 215, 0.2)";
-        ctx.lineWidth = 1;
+      draw() {
         ctx.beginPath();
-        ctx.moveTo(particles[i].x, particles[i].y);
-        ctx.lineTo(particles[j].x, particles[j].y);
-        ctx.stroke();
+        ctx.arc(this.x, this.y, 2, 0, Math.PI * 2);
+        ctx.fillStyle = "aqua";
+        ctx.fill();
       }
     }
-  }
-}
 
-animate();
+    const particles = [];
+    const numParticles = 30; // Increase the number of particles
 
-</script>
+    for (let i = 0; i < numParticles; i++) {
+      const x = Math.random() * canvas.width;
+      const y = Math.random() * canvas.height;
+      const speedX = (Math.random() - 0.5) * 1.2;
+      const speedY = (Math.random() - 0.5) * 1.2;
+      particles.push(new Particle(x, y, speedX, speedY));
+    }
+
+    function animate() {
+      requestAnimationFrame(animate);
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      for (const particle of particles) {
+        particle.update();
+        particle.draw();
+      }
+
+      for (let i = 0; i < particles.length; i++) {
+        for (let j = i + 1; j < particles.length; j++) {
+          const dx = particles[i].x - particles[j].x;
+          const dy = particles[i].y - particles[j].y;
+          const distance = Math.sqrt(dx * dx + dy * dy);
+
+          if (distance < 150) {
+            // Adjust the distance threshold for connections
+            ctx.strokeStyle = "rgba(157, 212, 215, 0.2)";
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.moveTo(particles[i].x, particles[i].y);
+            ctx.lineTo(particles[j].x, particles[j].y);
+            ctx.stroke();
+          }
+        }
+      }
+    }
+
+    animate();
+  </script>
 </html>
